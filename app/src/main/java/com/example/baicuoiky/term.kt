@@ -35,6 +35,7 @@ class term : AppCompatActivity() {
     private lateinit var list:ArrayList<MyModel>
     private lateinit var auth: FirebaseAuth
     var nameTerm: String? = ""
+    var id:String? = ""
     var arr :ArrayList<MyModel> = ArrayList()
 
     init{
@@ -50,9 +51,13 @@ class term : AppCompatActivity() {
     private fun getValue() {
         val intent = intent
         nameTerm= intent.getStringExtra("data")
+        id = intent.getStringExtra("IDdata")
+        if(id == null){
+            id = auth.uid.toString()
+        }
         nameTerm1.text = nameTerm.toString()
         myModelList = ArrayList()
-        db.child(auth.uid.toString()).child(nameTerm.toString()).addValueEventListener(object : ValueEventListener{
+        db.child(id.toString()).child(nameTerm.toString()).addValueEventListener(object : ValueEventListener{
             override fun onDataChange(snapshot: DataSnapshot) {
                 for(i in snapshot.children){
                     var a:String = i.child("defines").getValue().toString()
