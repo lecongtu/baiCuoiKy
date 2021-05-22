@@ -34,8 +34,7 @@ class addClassActivity : AppCompatActivity() {
 
     }
     fun onBack(view: View){
-        val intent: Intent = Intent(this, MainActivity::class.java)
-        startActivity(intent)
+        onBackPressed()
     }
     fun complete(view: View){
 

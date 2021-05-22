@@ -1,5 +1,6 @@
 package com.example.baicuoiky
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -61,5 +62,13 @@ class searchActivity : AppCompatActivity() {
             }
 
         })
+    }
+    fun home(view:View){
+        val i = Intent(this,MainActivity2::class.java)
+        startActivity(i)
+    }
+    fun add(view:View){
+        val i = Intent(this,addClassActivity::class.java)
+        startActivity(i)
     }
 }

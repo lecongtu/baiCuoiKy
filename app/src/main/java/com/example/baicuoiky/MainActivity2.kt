@@ -67,4 +67,8 @@ class MainActivity2 : AppCompatActivity() {
         val i:Intent = Intent(this,searchActivity::class.java)
         startActivity(i)
     }
+    fun add(view:View){
+        val i = Intent(this,addClassActivity::class.java)
+        startActivity(i)
+    }
 }
