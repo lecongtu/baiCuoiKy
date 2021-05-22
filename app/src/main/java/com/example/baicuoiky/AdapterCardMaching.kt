@@ -61,26 +61,20 @@ class AdapterCardMaching(var context: Context, var arr: ArrayList<String> , var 
                 if(count%2 == 0){
                     if(arr1[count+1].equals(list[1].word)){
                         view.word.alpha = 0F
-                        view = getView(list[0].position,list[0].view,list[0].parent)
-                        view.word.alpha = 0F
-                        time++
+                        getView(list[0].position,list[0].view,list[0].parent).word.alpha = 0F
                     }else{
-                        Toast.makeText(context,"sai rồi :" , Toast.LENGTH_SHORT).show()
+                        Toast.makeText(context,"Sai rồi" , Toast.LENGTH_SHORT).show()
                         view.word.setBackgroundColor(Color.parseColor("#FFFFFF"))
-                        view = getView(list[0].position,list[0].view,list[0].parent)
-                        view.word.setBackgroundColor(Color.parseColor("#FFFFFF"))
+                        getView(list[0].position,list[0].view,list[0].parent).word.setBackgroundColor(Color.parseColor("#FFFFFF"))
                     }
                 }else{
                     if(arr1[count-1].equals(list[1].word)){
                         view.word.alpha = 0F
-                        view = getView(list[0].position,list[0].view,list[0].parent)
-                        view.word.alpha = 0F
-                        time++
+                        getView(list[0].position,list[0].view,list[0].parent).word.alpha = 0F
                     }else{
-                        Toast.makeText(context,"sai rồi :" , Toast.LENGTH_SHORT).show()
+                        Toast.makeText(context,"Sai rồi" , Toast.LENGTH_SHORT).show()
                         view.word.setBackgroundColor(Color.parseColor("#FFFFFF"))
-                        view = getView(list[0].position,list[0].view,list[0].parent)
-                        view.word.setBackgroundColor(Color.parseColor("#FFFFFF"))
+                        getView(list[0].position,list[0].view,list[0].parent).word.setBackgroundColor(Color.parseColor("#FFFFFF"))
                     }
                 }
                 list.clear()

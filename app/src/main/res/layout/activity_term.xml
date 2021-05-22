@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bgr111"
+    android:background="#f4f4f4"
     android:orientation="vertical"
     tools:context=".term">
 
@@ -38,7 +38,8 @@
                             android:layout_marginLeft="20dp"
                             android:layout_marginTop="20dp"
                             android:text="hoc phan"
-                            android:textColor="@color/black"
+                            android:textStyle="bold"
+                            android:textColor="@color/card5"
                             android:textSize="30dp"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toBottomOf="@+id/viewPager" />
@@ -180,6 +181,7 @@
                                                     android:layout_width="match_parent"
                                                     android:layout_height="match_parent"
                                                     android:orientation="vertical"
+                                                    android:onClick="test"
                                                     android:weightSum="3">
 
                                                         <ImageView

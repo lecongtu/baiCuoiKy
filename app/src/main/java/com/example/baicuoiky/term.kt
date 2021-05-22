@@ -30,6 +30,7 @@ class term : AppCompatActivity() {
     private lateinit var db: DatabaseReference
     private lateinit var actionBar:ActionBar
     private lateinit var myModelList: ArrayList<MyModel>
+    private lateinit var listTes: ArrayList<MyModel>
     private lateinit var myAdapter: Adapter
     private lateinit var list:ArrayList<MyModel>
     private lateinit var auth: FirebaseAuth
@@ -93,4 +94,19 @@ class term : AppCompatActivity() {
         i.putExtra("data" , nameTerm)
         startActivity(i)
     }
+    fun test(view:View){
+        var i:Int = 0
+        listTes = myModelList
+        while(i<listTes.size){
+            var random = (i..listTes.size-1).random()
+            val aa = listTes[i]
+            listTes[i] = listTes[random]
+            listTes[random] = aa
+            i++
+        }
+        val intent = Intent(this, StudyActivity::class.java)
+        intent.putExtra("data1" , listTes)
+        startActivity(intent)
+    }
+
 }

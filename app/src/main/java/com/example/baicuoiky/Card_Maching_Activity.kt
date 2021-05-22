@@ -32,9 +32,6 @@ class Card_Maching_Activity : AppCompatActivity() {
         chronomter.base = SystemClock.elapsedRealtime() - pauseOfSet
         chronomter.start()
         getValue()
-        if(adapter.time == arr1.size/2){
-
-        }
     }
     fun gettime(view:View){
         chronomter.stop()

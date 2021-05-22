@@ -13,7 +13,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.BaiCuoiKy">
-        <activity android:name=".Card_Maching_Activity"></activity>
+        <activity android:name=".searchActivity"></activity>
+        <activity android:name=".SearchActivity" />
+        <activity android:name=".Card_Maching_Activity" />
         <activity android:name=".MainActivity2" />
         <activity android:name=".userActivity" />
         <activity android:name=".speakActivity" />

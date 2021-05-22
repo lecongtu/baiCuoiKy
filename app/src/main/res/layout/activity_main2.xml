@@ -60,6 +60,7 @@
                 android:layout_marginRight="10dp"
                 android:gravity="right|center_vertical"
                 android:text="Bỏ qua"
+                android:onClick="search"
                 android:textColor="@color/white"
                 android:textSize="20dp" />
         </LinearLayout>
@@ -92,6 +93,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:tabIndicator="@null"
+        app:tabSelectedTextColor="@color/card5"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
@@ -104,6 +106,7 @@
         <com.google.android.material.tabs.TabItem
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:onClick="search"
             android:icon="@drawable/search" />
 
         <com.google.android.material.tabs.TabItem

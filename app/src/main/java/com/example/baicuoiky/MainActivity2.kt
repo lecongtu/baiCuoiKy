@@ -1,7 +1,9 @@
 package com.example.baicuoiky
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 import kotlinx.android.synthetic.main.activity_main2.*
@@ -60,5 +62,9 @@ class MainActivity2 : AppCompatActivity() {
 
         })
 
+    }
+    fun search(view:View){
+        val i:Intent = Intent(this,searchActivity::class.java)
+        startActivity(i)
     }
 }
