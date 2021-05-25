@@ -12,7 +12,9 @@ class MainActivity2 : AppCompatActivity() {
     private lateinit var db: DatabaseReference
     private lateinit var auth: FirebaseAuth
     private lateinit var list:ArrayList<modelMain>
+    private lateinit var list1:ArrayList<modelMain>
     private lateinit var Adapter:AdapterMain
+    private lateinit var Adapter2:AdapterMainSave
     private var count:Int = 0
     init{
         db = FirebaseDatabase.getInstance().reference
@@ -26,22 +28,37 @@ class MainActivity2 : AppCompatActivity() {
 
     private fun getCard(){
         list = ArrayList()
+        list1= ArrayList()
         db.child(auth.uid.toString()).addChildEventListener(object : ChildEventListener{
             override fun onChildAdded(snapshot: DataSnapshot, previousChildName: String?) {
-                for(i in snapshot.children){
-                    count++
+                if(snapshot.key.toString() != "HocPhanDaLuu"){
+                    for(i in snapshot.children){
+                        count++
+                    }
+
+
+                    list.add(
+                        modelMain(
+                            snapshot.key.toString(),count,auth.currentUser?.displayName.toString())
+                    )
+                    count = 0
+
+                    Adapter = AdapterMain(this@MainActivity2,list)
+                    viewPager2.adapter = Adapter
+                    viewPager2.setPadding(10,0,100,0)
+                }else{
+                    var s:String = snapshot.child("count").value.toString()
+                    count = s.toIntOrNull()!!
+                    list1.add(
+                        modelMain(
+                            snapshot.child("title").value.toString(),count,snapshot.child("name").value.toString())
+                    )
+                    count = 0
+
+                    Adapter2 = AdapterMainSave(this@MainActivity2,list1)
+                    viewPager3.adapter = Adapter2
+                    viewPager3.setPadding(10,0,100,0)
                 }
-
-
-                list.add(
-                    modelMain(
-                        snapshot.key.toString(),count,"lecongtu")
-                )
-                count = 0
-
-                Adapter = AdapterMain(this@MainActivity2,list)
-                viewPager2.adapter = Adapter
-                viewPager2.setPadding(10,0,100,0)
             }
 
             override fun onChildChanged(snapshot: DataSnapshot, previousChildName: String?) {
@@ -69,6 +86,10 @@ class MainActivity2 : AppCompatActivity() {
     }
     fun add(view:View){
         val i = Intent(this,addClassActivity::class.java)
+        startActivity(i)
+    }
+    fun user(view:View){
+        val i = Intent(this,userActivity::class.java)
         startActivity(i)
     }
 }

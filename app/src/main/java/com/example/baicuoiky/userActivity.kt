@@ -1,6 +1,8 @@
 package com.example.baicuoiky
 
 import android.app.Activity
+import android.content.ClipData
+import android.content.ClipboardManager
 import android.content.Intent
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
@@ -32,29 +34,44 @@ class userActivity : AppCompatActivity() {
     }
 
     private fun btnClick(){
-        tv_profile_signOut.setOnClickListener{
+        logout.setOnClickListener{
              signOutUser()
         }
-        btn_profileSaveInfo.setOnClickListener {
+        btn_save.setOnClickListener {
             saveUserInfo()
         }
         iv_profileImage.setOnClickListener {
             selectImage()
         }
+        support.setOnClickListener{
+            gotoURL()
+        }
+        ic_coppy.setOnClickListener {
+            val clipboard : ClipboardManager = getSystemService(CLIPBOARD_SERVICE) as ClipboardManager
+            val clip = ClipData.newPlainText("EditText",edit_pass.text.toString())
+            clipboard.setPrimaryClip(clip)
+            Toast.makeText(this@userActivity,"text copied" , Toast.LENGTH_SHORT).show()
+        }
 
+    }
+    private fun gotoURL(){
+        val openURL = Intent(android.content.Intent.ACTION_VIEW)
+        openURL.data = Uri.parse("https://www.tutorialkart.com/")
+        startActivity(openURL)
     }
 
     private fun setUserInfo(){
-        et_profileEmail.setText(auth.currentUser?.email)
+        edit_email.setText("Email: "+auth.currentUser?.email)
         et_profileUsername.setText(auth.currentUser?.displayName)
         iv_profileImage.setImageURI(auth.currentUser?.photoUrl)
+        edit_pass.setText("ID: "+auth.currentUser?.uid)
         fileUri = auth.currentUser?.photoUrl
 
     }
 
     private fun signOutUser(){
         auth.signOut()
-        val i = Intent(this,MainActivity::class.java)
+        val i = Intent(this,loginActivity::class.java)
         startActivity(i)
         Toast.makeText(this, "Đăng xuất thành công" , Toast.LENGTH_SHORT).show()
     }
@@ -62,7 +79,7 @@ class userActivity : AppCompatActivity() {
         auth.currentUser?.let{
             val username = et_profileUsername.text.toString()
             val userProfilePicker = fileUri
-            val userEmail = et_profileEmail.text.toString()
+            val userEmail = edit_email.text.toString()
 
             val update = UserProfileChangeRequest.Builder()
                 .setDisplayName(username)

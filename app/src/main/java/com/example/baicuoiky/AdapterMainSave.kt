@@ -11,7 +11,7 @@ import androidx.viewpager.widget.PagerAdapter
 import kotlinx.android.synthetic.main.card_item.view.*
 import kotlinx.android.synthetic.main.term_item.view.*
 
-class AdapterMain(private val context:Context, private val myModelArrayList: ArrayList<modelMain>): PagerAdapter() {
+class AdapterMainSave(private val context:Context, private val myModelArrayList: ArrayList<modelMain>): PagerAdapter() {
     lateinit var mTTs: TextToSpeech
     override fun isViewFromObject(view: View, `object`: Any): Boolean {
         return view == `object`
@@ -37,7 +37,8 @@ class AdapterMain(private val context:Context, private val myModelArrayList: Arr
 
         view.setOnClickListener {
             val i = Intent(context,term::class.java)
-            i.putExtra("data" , title)
+            i.putExtra("data",title)
+            i.putExtra("IDdata" , name)
             context.startActivity(i)
         }
 

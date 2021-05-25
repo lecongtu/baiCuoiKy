@@ -1,15 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#f4f4f4"
     tools:context=".userActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
+        android:layout_marginTop="25dp"
         android:gravity="center"
+        android:background="@color/white"
         android:orientation="vertical"
         android:layout_centerInParent="true">
 
@@ -21,38 +24,90 @@
 
         <EditText
             android:id="@+id/et_profileUsername"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="Username"
-            android:inputType="textPersonName" />
-
-        <EditText
-            android:id="@+id/et_profileEmail"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="E-mail"
-            android:inputType="textEmailAddress" />
-
-        <Button
-            android:id="@+id/btn_profileSaveInfo"
-            android:layout_width="200dp"
-            android:layout_height="wrap_content"
-            android:background="@drawable/round_buttons"
-            android:layout_margin="10dp"
-            android:backgroundTint="#42A5F5"
-            android:text="Save info"
-            android:textColor="@android:color/white" />
-
-        <TextView
-            android:id="@+id/tv_profile_signOut"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:gravity="center"
-            android:text="Sign out"
-            android:textColor="#EF5350" />
+            android:layout_marginTop="10dp"
+            android:text="UserName"
+            android:textSize="20dp"
+            android:textAllCaps="false"
+            android:gravity="center" />
 
     </LinearLayout>
-</RelativeLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:background="@color/white"
+        android:gravity="center"
+        android:orientation="vertical">
+        <EditText
+            android:id="@+id/edit_email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Lecongtu9337@gmail.com"
+            android:textSize="17dp"
+            android:enabled="false"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <EditText
+                android:id="@+id/edit_pass"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:hint="Password"
+                android:textSize="17dp"
+                android:enabled="false"/>
+            <ImageView
+                android:id="@+id/ic_coppy"
+                android:layout_width="40dp"
+                android:layout_height="match_parent"
+                android:src="@drawable/ic_copy"/>
+        </LinearLayout>
+        <Button
+            android:id="@+id/btn_save"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Save"/>
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/support"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:background="@color/white"
+        android:gravity="center"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text=" Trung tâm hỗ trợ"
+            android:textSize="17dp"
+            android:paddingTop="15dp"
+            android:paddingBottom="15dp"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:background="@color/white"
+        android:gravity="center"
+        android:orientation="vertical">
+        <TextView
+            android:id="@+id/GT"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text=" Giới thiệu"
+            android:textSize="17dp"
+            android:paddingTop="15dp"
+            android:paddingBottom="15dp"/>
+    </LinearLayout>
+    <TextView
+        android:id="@+id/logout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/card5"
+        android:layout_gravity="center_horizontal"
+        android:text="Log out"/>
+</LinearLayout>

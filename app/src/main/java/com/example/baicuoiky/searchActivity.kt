@@ -13,7 +13,7 @@ import kotlinx.android.synthetic.main.activity_search.*
 import kotlinx.android.synthetic.main.activity_term.*
 
 class searchActivity : AppCompatActivity() {
-    private lateinit var list:ArrayList<modelMain>
+    private var list:ArrayList<modelMain> = ArrayList()
     private lateinit var auth: FirebaseAuth
     private lateinit var db: DatabaseReference
     private var count:Int = 0
@@ -26,7 +26,6 @@ class searchActivity : AppCompatActivity() {
         auth = FirebaseAuth.getInstance()
     }
     fun find(view: View){
-        list = ArrayList()
         db.child(search.text.toString()).addChildEventListener(object : ChildEventListener{
             override fun onChildAdded(snapshot: DataSnapshot, previousChildName: String?) {
                 for(i in snapshot.children){
@@ -71,4 +70,10 @@ class searchActivity : AppCompatActivity() {
         val i = Intent(this,addClassActivity::class.java)
         startActivity(i)
     }
+    fun save(view:View){
+        for(i in 0 until list.size){
+            db.child(auth.uid.toString()).child("HocPhanDaLuu").setValue(list[i])
+        }
+    }
+
 }
